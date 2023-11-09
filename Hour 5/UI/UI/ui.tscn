@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/hour5.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/UI/ui.gd" type="Script" id=2]
+[ext_resource path="res://UI/UI/timer.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="score" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 56.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.435294, 1, 0.733333, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.184314, 0.121569, 0.278431, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "score: 0"
+uppercase = true
+
+[node name="level" type="Label" parent="."]
+margin_left = 138.0
+margin_top = 16.0
+margin_right = 178.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.435294, 1, 0.733333, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.184314, 0.121569, 0.278431, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 1"
+uppercase = true
+
+[node name="retry" type="Label" parent="."]
+visible = false
+margin_left = 88.0
+margin_top = 72.0
+margin_right = 232.0
+margin_bottom = 97.0
+custom_colors/font_color = Color( 0.435294, 1, 0.733333, 1 )
+custom_colors/font_color_shadow = Color( 0.184314, 0.121569, 0.278431, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "game over
+-press the enter key to retry-"
+align = 1
+uppercase = true
+
+[node name="timer" type="Label" parent="."]
+margin_left = 272.0
+margin_top = 16.0
+margin_right = 312.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.435294, 1, 0.733333, 1 )
+custom_colors/font_color_shadow = Color( 0.184314, 0.121569, 0.278431, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "00:00"
+script = ExtResource( 3 )
+
+[node name="timer" type="Timer" parent="timer"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="timer/timer" to="timer" method="_on_timer_timeout"]
