@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Exercise/SpawnButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Exercise/SpawnCounter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Exercise/Stage.gd" type="Script" id=3]
+[ext_resource path="res://Exercise/SpawnCounter.gd" type="Script" id=4]
+
+[node name="Stage" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="SpawnCounter" parent="." instance=ExtResource( 2 )]
+margin_left = 440.0
+margin_top = 248.0
+margin_right = 556.0
+margin_bottom = 262.0
+script = ExtResource( 4 )
+
+[node name="SpawnButton" parent="." instance=ExtResource( 1 )]
+margin_left = 448.0
+margin_top = 448.0
+margin_right = 541.0
+margin_bottom = 468.0
+
+[node name="SpawnButton2" parent="." instance=ExtResource( 1 )]
+margin_left = 632.0
+margin_top = 448.0
+margin_right = 737.0
+margin_bottom = 468.0
+text = "Spawn Sprite 2"
+
+[connection signal="pressed" from="SpawnButton" to="." method="_on_SpawnButton_pressed"]
+[connection signal="pressed" from="SpawnButton2" to="." method="_on_SpawnButton2_pressed"]
