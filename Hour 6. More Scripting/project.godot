@@ -10,8 +10,12 @@ config_version=4
 
 [application]
 
-config/name="Godot-24-Hours - Hour 2"
+config/name="Godot-24-Hours - Hour 6. More Scripting"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameState="*res://Autoloads/GameState.gd"
 
 [gui]
 
