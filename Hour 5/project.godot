@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Godot-24-Hours - Hour 5. Game 1: Space Shooter"
+config/name="Godot-24-Hours-Hour5-Game-1-Space Shooter"
 run/main_scene="res://Stages/Stage1/stage.tscn"
 config/icon="res://icon.png"
 
