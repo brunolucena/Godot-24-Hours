@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Try It Yourself/KinematicBody2D.gd" type="Script" id=1]
+
+[sub_resource type="PhysicsMaterial" id=4]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 10 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+[node name="Exercise1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 367, 602 )
+constant_linear_velocity = Vector2( 50, 50 )
+physics_material_override = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 144, 0 )
+shape = SubResource( 1 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 168, 360 )
+sleeping = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2( 200, 360 )
+mass = 20.0
+gravity_scale = 10.0
+contact_monitor = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2( 232, 360 )
+gravity_scale = 20.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2( 264, 360 )
+mass = 60.0
+gravity_scale = 30.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 440, 144 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 3 )

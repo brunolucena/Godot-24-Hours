@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Exercises/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 656, 552, 1008, 584, 16, 584, 600, 552, 1008, 8, 960, 392, 936, 48, 648, 280, 744, 32, 880, 272, 776, 360, 616, 408, 616, 392, 816, 520, 648, 136, 776, 464, 656, 520, 616, 512, 472, 480, 584, 408, 592, 368, 472, 400, 584, 360, 344, 464, 16, 472, 512, 248, 200, 328, 360, 216, 544, 144, 352, 392, 200, 104, 16, 8, 112, 160 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 1, 5, 6 ), PoolIntArray( 7, 8, 9, 10, 11, 12 ), PoolIntArray( 13, 5, 1 ), PoolIntArray( 13, 1, 0 ), PoolIntArray( 8, 7, 14 ), PoolIntArray( 15, 13, 0, 16 ), PoolIntArray( 11, 15, 16, 17, 18, 19 ), PoolIntArray( 11, 10, 15 ), PoolIntArray( 20, 19, 18, 21, 22 ), PoolIntArray( 23, 18, 17, 3, 2, 24 ), PoolIntArray( 25, 7, 12, 22 ), PoolIntArray( 26, 27, 28, 25, 29, 24 ), PoolIntArray( 29, 23, 24 ), PoolIntArray( 28, 27, 30, 8 ), PoolIntArray( 8, 14, 28 ), PoolIntArray( 4, 6, 8 ), PoolIntArray( 31, 4, 8 ), PoolIntArray( 31, 8, 30 ), PoolIntArray( 31, 30, 32 ), PoolIntArray( 24, 31, 32, 26 ), PoolIntArray( 21, 29, 25, 22 ) ]
+outlines = [ PoolVector2Array( 16, 8, 16, 472, 16, 584, 1008, 584, 1008, 8 ), PoolVector2Array( 200, 104, 112, 160, 200, 328, 360, 216 ), PoolVector2Array( 544, 144, 512, 248, 648, 280, 648, 136 ), PoolVector2Array( 352, 392, 344, 464, 472, 480, 472, 400 ), PoolVector2Array( 776, 464, 816, 520, 960, 392, 936, 48, 744, 32, 880, 272, 776, 360 ), PoolVector2Array( 600, 552, 616, 512, 656, 520, 656, 552 ), PoolVector2Array( 592, 368, 584, 408, 616, 408, 616, 392, 584, 360 ) ]
+
+[node name="NavigationAgentTest" type="Node2D"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 600, 328 )

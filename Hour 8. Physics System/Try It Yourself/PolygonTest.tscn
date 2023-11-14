@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="PolygonTest" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+position = Vector2( 1, -4 )
+polygon = PoolVector2Array( 62, -121, 116, -84, 112, -16, 52, 74, -78, 80, -136, -3, -96, -95 )
+one_way_collision = true
