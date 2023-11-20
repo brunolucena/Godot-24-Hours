@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://0cpr53j8gs41"]
+[gd_scene load_steps=5 format=3 uid="uid://0cpr53j8gs41"]
 
 [ext_resource type="Texture2D" uid="uid://cqrbix4lc8ry3" path="res://icon.png" id="1_gfvo4"]
 [ext_resource type="Script" path="res://PanelContainer3.gd" id="2_tg5rf"]
+[ext_resource type="AudioStream" uid="uid://c2gfc1igfrmth" path="res://Hard-Rock_AdobeStock_452604950.wav" id="3_4vhw3"]
+[ext_resource type="Script" path="res://HSlider.gd" id="3_c2vjw"]
 
 [node name="Spotify" type="VBoxContainer"]
 anchors_preset = 15
@@ -245,7 +247,7 @@ layout_mode = 2
 text = "Previous
 "
 
-[node name="Button2" type="Button" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Play_Pause" type="Button" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Play/Pause
 "
@@ -262,19 +264,24 @@ theme_override_constants/separation = 16
 
 [node name="CurrentTime" type="Label" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "17:04"
+text = "00:00"
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 1572.0
-step = 0.01
-value = 1024.0
+step = 0.1
+script = ExtResource("3_c2vjw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider"]
+stream = ExtResource("3_4vhw3")
+
+[node name="Timer" type="Timer" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider"]
+wait_time = 0.1
 
 [node name="TotalTime" type="Label" parent="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "26:12	"
+text = "00:00"
 
 [node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer2"]
 layout_mode = 2
@@ -295,14 +302,18 @@ theme_override_constants/separation = 16
 
 [node name="ShowRight" type="Button" parent="HBoxContainer2/PanelContainer3/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Open Right"
+text = "Toggle	 Right"
 
-[node name="HSlider" type="HSlider" parent="HBoxContainer2/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="Volume" type="HSlider" parent="HBoxContainer2/PanelContainer3/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 value = 60.0
 
-[connection signal="pressed" from="HBoxContainer/PanelContainer3/Close" to="HBoxContainer/PanelContainer3" method="_change_visibility_pressed" binds= [false]]
-[connection signal="pressed" from="HBoxContainer2/PanelContainer3/MarginContainer/HBoxContainer/ShowRight" to="HBoxContainer/PanelContainer3" method="_change_visibility_pressed" binds= [true]]
+[connection signal="pressed" from="HBoxContainer/PanelContainer3/Close" to="HBoxContainer/PanelContainer3" method="_change_visibility_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer/Play_Pause" to="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider" method="_on_play_pause_pressed"]
+[connection signal="value_changed" from="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider" to="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider" method="_on_value_changed"]
+[connection signal="timeout" from="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider/Timer" to="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider" method="_on_timer_timeout"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer3/MarginContainer/HBoxContainer/ShowRight" to="HBoxContainer/PanelContainer3" method="_change_visibility_pressed"]
+[connection signal="value_changed" from="HBoxContainer2/PanelContainer3/MarginContainer/HBoxContainer/Volume" to="HBoxContainer2/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2/HSlider" method="_on_volume_value_changed"]

@@ -1,10 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1700504997
+::res://::1700508290
 ColorRect.gd::GDScript::-1::1700504982::0::1::::<>ColorRect<>::
 ColorRect.tscn::PackedScene::-1::1700504982::0::1::::<><>::res://ColorRect.gd
 Containers.tscn::PackedScene::-1::1700504982::0::1::::<><>::
-default_env.tres::Environment::-1::1700504982::0::1::::<><>::
+default_env.tres::Environment::387522848643193326::1700508181::0::1::::<><>::
 FileDialog.gd::GDScript::-1::1700504982::0::1::::<>FileDialog<>::
+Hard-Rock_AdobeStock_452604950.wav::AudioStreamWAV::6680634946934593237::1700508290::1700508290::1::::<><>::
 HBoxContainer.tscn::PackedScene::-1::1700504982::0::1::::<><>::
 HSplitContainer.tscn::PackedScene::-1::1700504982::0::1::::<><>::
 icon.png::CompressedTexture2D::5931033544097903320::1700162393::1700504998::1::::<><>::
@@ -15,6 +16,8 @@ new_styleboxflat.tres::StyleBoxFlat::-1::1700504983::0::1::::<><>::
 new_theme.tres::Theme::-1::1700504983::0::1::::<><>::res://new_styleboxflat.tres<>res://icon.png
 Node2D.tscn::PackedScene::-1::1700504983::0::1::::<><>::res://ColorRect.tscn
 ReferenceRect.tscn::PackedScene::-1::1700504983::0::1::::<><>::
+PanelContainer3.gd::GDScript::-1::1700508136::0::1::::<>PanelContainer<>::
+spotify.tscn::PackedScene::1759792579255112860::1700508181::0::1::::<><>::uid://cqrbix4lc8ry3::::res://icon.png<>res://PanelContainer3.gd
 ScrollContainer.tscn::PackedScene::-1::1700504983::0::1::::<><>::
 Stage2.tscn::PackedScene::-1::1700504983::0::1::::<><>::res://icon.png
 Stage.tscn::PackedScene::-1::1700504983::0::1::::<><>::res://icon.png<>res://WindowDialog.gd<>res://FileDialog.gd
