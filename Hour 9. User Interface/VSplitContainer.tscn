@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="VSplitContainer" type="VSplitContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1024.0
+offset_bottom = 14.0
+size_flags_vertical = 2
+text = "Teste"
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 306.0
+offset_right = 1024.0
+offset_bottom = 320.0
+size_flags_vertical = 2
+text = "Teste"

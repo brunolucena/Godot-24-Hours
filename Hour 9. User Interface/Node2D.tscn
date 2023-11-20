@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ColorRect.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 105.0
+offset_top = 57.0
+offset_right = 271.0
+offset_bottom = 151.0
+
+[node name="ColorRect2" parent="." instance=ExtResource( 1 )]
+anchor_bottom = 0.0
+offset_left = 339.0
+offset_top = 31.0
+offset_right = 428.0
+offset_bottom = 153.0

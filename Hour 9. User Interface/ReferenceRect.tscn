@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="ReferenceRect" type="ReferenceRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+border_width = 5.0
+editor_only = false

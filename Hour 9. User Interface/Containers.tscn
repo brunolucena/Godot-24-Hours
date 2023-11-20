@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="Containers" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer"]
+offset_right = 47.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+text = "Teste"
+
+[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer"]
+offset_left = 51.0
+offset_right = 98.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+text = "Teste"
