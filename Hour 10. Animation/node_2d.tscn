@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp1qb42rtf68f"]
+
+[ext_resource type="PackedScene" uid="uid://hjl17o4gfjew" path="res://sprite_2d_animation_tree.tscn" id="1_8rs57"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2DAnimationTree" parent="." instance=ExtResource("1_8rs57")]

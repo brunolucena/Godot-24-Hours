@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dshju34frs3xv"]
+
+[ext_resource type="Script" path="res://new_script.gd" id="1_5xn8p"]
+
+[node name="Tests" type="Node2D"]
+script = ExtResource("1_5xn8p")
+metadata/_edit_lock_ = true
+
+[node name="PauseMenu" type="AcceptDialog" parent="."]
+process_mode = 2
+initial_position = 2

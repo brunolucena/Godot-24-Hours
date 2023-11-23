@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://pn12tkonys8d"]
+
+[ext_resource type="Script" path="res://manually_handling_quit_request.gd" id="1_o7g3r"]
+
+[node name="ManuallyHandlingQuitRequest" type="Node2D"]
+editor_description = "Testing"
+script = ExtResource("1_o7g3r")

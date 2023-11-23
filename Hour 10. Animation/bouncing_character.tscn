@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://we6gkft7qg4w"]
+
+[ext_resource type="Texture2D" uid="uid://jksto2aa26yq" path="res://icon.svg" id="1_3de8i"]
+[ext_resource type="Script" path="res://bouncing_character.gd" id="2_8k2og"]
+[ext_resource type="Animation" uid="uid://crl0juptosu8g" path="res://bouncing_animation.res" id="2_oa487"]
+
+[sub_resource type="Animation" id="Animation_h4ja8"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.742188)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7dm3"]
+_data = {
+"RESET": SubResource("Animation_h4ja8"),
+"bounce": ExtResource("2_oa487")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ttjjp"]
+
+[node name="BouncingCharacter" type="Sprite2D"]
+texture = ExtResource("1_3de8i")
+script = ExtResource("2_8k2og")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"animations": SubResource("AnimationLibrary_y7dm3"),
+"test": SubResource("AnimationLibrary_ttjjp")
+}
+next/animations/bounce = &""
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,0 +1,167 @@
+[gd_scene load_steps=13 format=3 uid="uid://hjl17o4gfjew"]
+
+[ext_resource type="Texture2D" uid="uid://jksto2aa26yq" path="res://icon.svg" id="1_mb0u3"]
+[ext_resource type="Script" path="res://sprite_2d_animation_tree.gd" id="2_0438o"]
+
+[sub_resource type="Animation" id="Animation_fhqwh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hy1rc"]
+resource_name = "move_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_move_left"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7bf4p"]
+resource_name = "move_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_move_right"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_an55c"]
+resource_name = "move_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmale"]
+_data = {
+"RESET": SubResource("Animation_fhqwh"),
+"move_left": SubResource("Animation_hy1rc"),
+"move_right": SubResource("Animation_7bf4p"),
+"move_up": SubResource("Animation_an55c")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6adbu"]
+animation = &"move_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ihb7c"]
+animation = &"move_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ccd5q"]
+animation = &"move_left"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_8g1cq"]
+xfade_time = 0.1
+input_0/name = "move_right"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "move_left"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "move_up"
+input_2/auto_advance = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eaoaa"]
+graph_offset = Vector2(-460.755, -48.6571)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ccd5q")
+nodes/Animation/position = Vector2(-240, -20)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6adbu")
+"nodes/Animation 2/position" = Vector2(-240, 100)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_ihb7c")
+"nodes/Animation 3/position" = Vector2(80, -80)
+nodes/Transition/node = SubResource("AnimationNodeTransition_8g1cq")
+nodes/Transition/position = Vector2(-40, 40)
+node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Animation 2", &"Transition", 1, &"Animation", &"Transition", 2, &"Animation 3"]
+
+[node name="Sprite2DAnimationTree" type="Sprite2D"]
+rotation = 6.28319
+texture = ExtResource("1_mb0u3")
+script = ExtResource("2_0438o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gmale")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_eaoaa")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Transition/current_state = "move_left"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
