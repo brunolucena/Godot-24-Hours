@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://44d6ej5aro7d"]
+
+[ext_resource type="Script" path="res://DirectoryReading.gd" id="1_8lylc"]
+
+[node name="DirectoryReading" type="Node2D"]
+script = ExtResource("1_8lylc")

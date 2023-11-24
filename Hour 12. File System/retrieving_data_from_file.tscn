@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1rr8h73xqhy8"]
+
+[ext_resource type="Script" path="res://retrieving_data_from_file.gd" id="1_tw8ov"]
+
+[node name="RetrievingDataFromFile" type="Node2D"]
+script = ExtResource("1_tw8ov")

@@ -13,7 +13,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	clock += delta
 	var scene = ResourceLoader.load_threaded_get("sprite_2d.tscn")
-	var status = ResourceLoader.load_threaded_get_status("sprite_2d.tscn")
+	var progress = []
+	var status = ResourceLoader.load_threaded_get_status("sprite_2d.tscn", progress)
 	print(status)
+	print("progress ", progress)
 	if scene:
 		get_tree().change_scene_to_packed(scene)

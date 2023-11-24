@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwr2peuojnhbe"]
+
+[ext_resource type="Script" path="res://writing_data_to_file.gd" id="1_jk0n8"]
+
+[node name="WritingDataToFile" type="Node2D"]
+script = ExtResource("1_jk0n8")
