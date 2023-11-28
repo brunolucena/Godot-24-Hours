@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://baeq1xny0w6bq"]
+
+[sub_resource type="Shader" id="Shader_no5np"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's ORMMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform sampler2D texture_orm : hint_roughness_g,filter_linear_mipmap,repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	vec4 orm_tex = texture(texture_orm,base_uv);
+	ROUGHNESS = orm_tex.g;
+	METALLIC = orm_tex.b;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnefe"]
+render_priority = 0
+shader = SubResource("Shader_no5np")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rbchl"]
+material = SubResource("ShaderMaterial_rnefe")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_rbchl")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.989125, -0.0455121, -0.13986, 0.108855, 0.866003, 0.488046, 0.0989069, -0.497963, 0.861539, -0.171664, 1.81045, 2.95106)
+light_color = Color(0.596078, 0.223529, 0.34902, 1)
+light_energy = 10.031
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 5.724
+light_size = 0.467
+light_specular = 15.89
+distance_fade_enabled = true
+distance_fade_begin = 908.85
+distance_fade_length = 589.23
+spot_range = 10.831
+spot_angle = 17.57
