@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp3f3diw63pww"]
+
+[ext_resource type="Texture2D" uid="uid://cxqjgpw5kfiyb" path="res://Components/Asteroid/sprites/asteroid2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bpu1tk6r8dj5s" path="res://Components/Asteroid/sprites/asteroid1.png" id="2"]
+[ext_resource type="Script" path="res://Components/Asteroid/asteroid.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qga71"]
+polygon = PackedVector2Array(-2, -8, 1, -8, 5, -5, 8, 2, 4, 7, -2, 7, -8, 4, -8, 0, -5, -6)
+
+[node name="asteroid" type="Area2D" groups=["asteroid"]]
+position = Vector2(153, 80)
+script = ExtResource("3")
+
+[node name="hit_zone" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_qga71")
+
+[connection signal="area_entered" from="." to="." method="_on_asteroid_area_entered"]

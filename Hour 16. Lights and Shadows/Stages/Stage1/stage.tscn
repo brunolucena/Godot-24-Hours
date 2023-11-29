@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bix0sa6cvx3dt"]
+
+[ext_resource type="Texture2D" uid="uid://cjdsewsbdogd2" path="res://Stages/Stage1/sprites/background.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://c10pri3a68hff" path="res://Components/Player/player.tscn" id="2"]
+[ext_resource type="Script" path="res://Stages/Stage1/background.gd" id="4"]
+[ext_resource type="Script" path="res://Stages/Stage1/stage.gd" id="5"]
+[ext_resource type="PackedScene" path="res://UI/UI/ui.tscn" id="7"]
+
+[node name="stage" type="Node2D"]
+script = ExtResource("5")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false
+script = ExtResource("4")
+
+[node name="spawn_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="next_level_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="ui" parent="." instance=ExtResource("7")]
+
+[node name="player" parent="." instance=ExtResource("2")]
+position = Vector2(59, 60)
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="next_level_timer" to="." method="_on_next_level_timer_timeout"]

@@ -1,0 +1,12 @@
+SpotLight3D
+OmniLight3D
+DirectionalLight3D
+MeshInstance3D
+WorldEnvironment
+LightOccluder2D
+OccluderInstance3D
+PointLight2D
+Polygon2D
+ShaderGlobalsOverride
+CanvasModulate
+DirectionalLight2D

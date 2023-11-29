@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://du3ojb33myked"]
+
+[sub_resource type="Environment" id="Environment_je6ur"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w4u7r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xki4p"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_je6ur")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("PlaneMesh_w4u7r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18765, 0)
+mesh = SubResource("CapsuleMesh_xki4p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.477685, 0.828827, 0.291311, -0.104471, -0.382827, 0.917894, 0.872297, 0.408031, 0.269459, 0, -1.1523, -2.01498)
+visible = false
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.592589, -0.283396, -0.754006, -0.68635, 0.667603, 0.288497, 0.421617, 0.688472, -0.590123, 1.23751, 2.47676, 1.31402)
+visible = false
+light_color = Color(0.839216, 0.937255, 0.780392, 1)
+light_size = 0.404
+shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.923226, 0.361284, 0.130876, -0.343337, 0.928531, -0.141244, -0.172552, 0.0854654, 0.981286, 0.207546, 1.12486, 1.94533)
+light_color = Color(0.960784, 0.913725, 0.701961, 1)
+shadow_enabled = true
+spot_range = 9.792
+spot_attenuation = 0.138696
+spot_angle = 47.92
+spot_angle_attenuation = 0.129408

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2jjy2m22h0kh"]
+
+[ext_resource type="Texture2D" uid="uid://kc257uvyjaiw" path="res://Components/Shot/sprites/shot2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://5wwadi20qgns" path="res://Components/Shot/sprites/shot1.png" id="2"]
+[ext_resource type="Script" path="res://Components/Shot/shot.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(8, 4)
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_d8olg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_efg61"]
+gradient = SubResource("Gradient_d8olg")
+
+[node name="shot" type="Area2D" groups=["shot"]]
+position = Vector2(12, 91)
+script = ExtResource("3")
+
+[node name="damage_zone" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("1")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("2")
+frame = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(5.96046e-08, 1.90735e-06)
+scale = Vector2(0.046875, 2)
+color = Color(0.439216, 1, 0.737255, 1)
+texture = SubResource("GradientTexture1D_efg61")
+
+[connection signal="area_entered" from="." to="." method="_on_shot_area_entered"]

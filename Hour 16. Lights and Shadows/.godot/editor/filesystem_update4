@@ -1,0 +1,9 @@
+res://default_env.tres
+res://Stages/Stage1/stage.tscn
+res://Stages/Stage1/stage.gd
+res://Components/Player/player.gd
+res://Components/Asteroid/asteroid.gd
+res://Components/Shot/shot.tscn
+res://Components/Player/player.tscn
+res://Components/Asteroid/asteroid.tscn
+res://Exercises/3d_lights.tscn

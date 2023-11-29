@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://c10pri3a68hff"]
+
+[ext_resource type="Texture2D" uid="uid://dpsde0fis8q1j" path="res://Components/Player/sprites/player1.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://um1fobri7ry2" path="res://Components/Player/sprites/player2.png" id="2"]
+[ext_resource type="Script" path="res://Components/Player/player.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_6dcet"]
+offsets = PackedFloat32Array(0, 0.658065)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmg3n"]
+gradient = SubResource("Gradient_6dcet")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_0vtwt"]
+offsets = PackedFloat32Array(0.529032, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6gead"]
+gradient = SubResource("Gradient_0vtwt")
+width = 10
+
+[node name="player" type="Area2D" groups=["player"]]
+position = Vector2(160, 89)
+script = ExtResource("3")
+
+[node name="hit_zone" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("2")
+frame = 1
+
+[node name="reload_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-6, -2)
+scale = Vector2(0.09375, 0.09375)
+texture = SubResource("GradientTexture2D_nmg3n")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-6, 3)
+scale = Vector2(0.0937504, 0.0760138)
+texture = SubResource("GradientTexture2D_nmg3n")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(5, 0)
+scale = Vector2(5.975, 4.5)
+color = Color(1, 0.835294, 0.843137, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture1D_6gead")
+
+[connection signal="area_entered" from="." to="." method="_on_player_area_entered"]
+[connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]
